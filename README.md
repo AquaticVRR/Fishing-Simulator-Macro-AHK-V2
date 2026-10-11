@@ -40,3 +40,6 @@ hover time, the amount of time before it clicks (May be changed later to before 
 
 2: Failsafe Tab
 just incase you want the click to happen sooner or later when no click is detected for a period of time
+
+
+WARNING. colors may or may not work for you. if not take a screenshot of the color. save it, and then keep that so you never lose that color. if your colors do work with mine, then send a hex code with any other colors you want me to add.
