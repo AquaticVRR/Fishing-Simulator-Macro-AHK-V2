@@ -77,19 +77,19 @@ Gui, Add, Tab3, x5 y5 w280 h720 vMainTabs, Macro|AutoSell|Fail Safe
 ; ==================== TAB 1: MACRO ====================
 Gui, Tab, Macro
 Gui, Add, Text, x15 y35, 1. Setup Scan Zones:
-Gui, Add, Button, x15 y55 w250 gSetZone1, 🎯 Zone 1: Bubble Box
-Gui, Add, Button, x15 y85 w250 gSetZone2, 🎯 Zone 2: Scan Line
-Gui, Add, Button, x15 y115 w250 gSetZone3, 🎯 Zone 3: Restart Box
+Gui, Add, Button, x15 y55 w250 gSetZone1, Zone 1: Bubble Box
+Gui, Add, Button, x15 y85 w250 gSetZone2, Zone 2: Scan Line
+Gui, Add, Button, x15 y115 w250 gSetZone3, Zone 3: Restart Box
 
 Gui, Add, Text, x15 y150, 2. Target Colors:
-Gui, Add, Button, x15 y170 w110 gPickCyanColor, 🧪 Cyan Bubble
+Gui, Add, Button, x15 y170 w110 gPickCyanColor, Cyan Bubble
 Gui, Add, Progress, x+5 w75 h23 vCyanVisual -Smooth +Border cWhite BackgroundWhite, 100
 Gui, Add, CheckBox, x+8 y174 vEnableCyanColor gToggleCyanColor Checked, On
 
-Gui, Add, Button, x15 y200 w115 gPickClickColor, 🧪 Click Color
+Gui, Add, Button, x15 y200 w115 gPickClickColor, Click Color
 Gui, Add, Progress, x+5 w130 h23 vClickVisual -Smooth +Border cWhite BackgroundWhite, 100
 
-Gui, Add, Button, x15 y230 w115 gPickRestartColor, 🧪 Restart Color
+Gui, Add, Button, x15 y230 w115 gPickRestartColor, Restart Color
 Gui, Add, Progress, x+5 w130 h23 vRestartVisual -Smooth +Border cWhite BackgroundWhite, 100
 
 Gui, Add, Text, x15 y262, Extra Bubble Color (Single Active):
@@ -98,7 +98,7 @@ Gui, Add, Text, x140 y281, Tol:
 Gui, Add, Edit, x165 y278 w45 vBubbleToleranceInput gSaveAllSettings Number, 15
 
 ; Single Active Color Display
-Gui, Add, Button, x15 y305 w115 h24 gPickExtraColorManual, 🧪 Custom Pick
+Gui, Add, Button, x15 y305 w115 h24 gPickExtraColorManual, Custom Pick
 Gui, Add, Progress, x+5 w130 h24 vExtraVisual -Smooth +Border cWhite BackgroundWhite, 100
 
 ; 3 Preset Buttons
@@ -115,10 +115,10 @@ Gui, Add, Edit, x15 y493 w250 vScanRateInput gSaveAllSettings, 30
 Gui, Add, Text, x15 y520, Restart Delay (ms):
 Gui, Add, Edit, x15 y538 w250 vRestartDelayInput gSaveAllSettings, 1000
 
-Gui, Add, Text, x15 y575, ⌨️ Toggle Key:
+Gui, Add, Text, x15 y575, Toggle Key:
 Gui, Add, Edit, x100 y572 w50 vHotkeyInput gUpdateHotkey Limit1, q
 Gui, Add, Text, x15 y605 w130 vStatus, Status: Ready
-Gui, Add, Button, x150 y600 w115 h25 vStartBtn gToggleMacro Default, ▶️ Start
+Gui, Add, Button, x150 y600 w115 h25 vStartBtn gToggleMacro Default, Start
 
 ; ==================== TAB 2: AUTOSELL ====================
 Gui, Tab, AutoSell
@@ -136,9 +136,9 @@ Gui, Add, Radio, x115 y146 vRadioKeyCustom gUpdateKeySelection, Other:
 Gui, Add, Edit, x175 y143 w50 vCustomSellKey gSaveAllSettings Limit1, e
 
 Gui, Add, CheckBox, x15 y170 vEnablePos05 gSaveAllSettings, Enable Position 0.5 Click
-Gui, Add, Button, x15 y192 w250 vBtnPos05 gPickPosition05, 📍 Position 0.5: (0, 0)
-Gui, Add, Button, x15 y222 w250 vBtnPos1 gPickPosition1, 📍 Position 1: (0, 0)
-Gui, Add, Button, x15 y252 w250 vBtnPos2 gPickPosition2, 📍 Position 2: (0, 0)
+Gui, Add, Button, x15 y192 w250 vBtnPos05 gPickPosition05, Position 0.5: (0, 0)
+Gui, Add, Button, x15 y222 w250 vBtnPos1 gPickPosition1, Position 1: (0, 0)
+Gui, Add, Button, x15 y252 w250 vBtnPos2 gPickPosition2, Position 2: (0, 0)
 
 Gui, Add, Text, x15 y285, Select Position Timers:
 Gui, Add, DropDownList, x15 y303 w250 vSelectedPosTiming gOnTimingTargetChange, Pos 0.5||Pos 1|Pos 2
@@ -397,17 +397,17 @@ PickPositionCoord(posType) {
     CoordMode, Mouse, Screen
     While (GuiMainDisabled) {
         MouseGetPos, curMX, curMY
-        ToolTip, 📍 Click to Set Position %posType% (%curMX%`, %curMY%), % (curMX + 15), % (curMY + 15), 1
+        ToolTip, Click to Set Position %posType% (%curMX%`, %curMY%), % (curMX + 15), % (curMY + 15), 1
         if (GetKeyState("LButton", "P")) {
             if (posType = "05") {
                 Pos05_X := curMX, Pos05_Y := curMY
-                GuiControl, Main:, BtnPos05, 📍 Pos 0.5: (%Pos05_X%`, %Pos05_Y%)
+                GuiControl, Main:, BtnPos05, Pos 0.5: (%Pos05_X%`, %Pos05_Y%)
             } else if (posType = "1") {
                 Pos1_X := curMX, Pos1_Y := curMY
-                GuiControl, Main:, BtnPos1, 📍 Pos 1: (%Pos1_X%`, %Pos1_Y%)
+                GuiControl, Main:, BtnPos1, Pos 1: (%Pos1_X%`, %Pos1_Y%)
             } else if (posType = "2") {
                 Pos2_X := curMX, Pos2_Y := curMY
-                GuiControl, Main:, BtnPos2, 📍 Pos 2: (%Pos2_X%`, %Pos2_Y%)
+                GuiControl, Main:, BtnPos2, Pos 2: (%Pos2_X%`, %Pos2_Y%)
             }
             KeyWait, LButton
             GuiMainDisabled := 0
@@ -472,7 +472,7 @@ SampleScreenColor(targetType) {
     
     While (!GetKeyState("LButton", "P")) {
         MouseGetPos, mX, mY
-        ToolTip, █ Click to sample color, % (mX + 15), % (mY + 15), 1
+        ToolTip, Click to sample color, % (mX + 15), % (mY + 15), 1
         Sleep, 30
     }
     KeyWait, LButton
@@ -615,11 +615,11 @@ LoadAllSettings() {
     GuiControl, Main:, ReturnGlideMsInput, %ReturnGlideMs%
 
     if (Pos05_X > 0 && Pos05_Y > 0)
-        GuiControl, Main:, BtnPos05, 📍 Pos 0.5: (%Pos05_X%`, %Pos05_Y%)
+        GuiControl, Main:, BtnPos05, Pos 0.5: (%Pos05_X%`, %Pos05_Y%)
     if (Pos1_X > 0 && Pos1_Y > 0)
-        GuiControl, Main:, BtnPos1, 📍 Pos 1: (%Pos1_X%`, %Pos1_Y%)
+        GuiControl, Main:, BtnPos1, Pos 1: (%Pos1_X%`, %Pos1_Y%)
     if (Pos2_X > 0 && Pos2_Y > 0)
-        GuiControl, Main:, BtnPos2, 📍 Pos 2: (%Pos2_X%`, %Pos2_Y%)
+        GuiControl, Main:, BtnPos2, Pos 2: (%Pos2_X%`, %Pos2_Y%)
 
     if (SellKeyChoice = "e") {
         GuiControl, Main:, RadioKeyE, 1
@@ -788,7 +788,7 @@ ToggleMacro:
         SetTimer, BackgroundInactivityWatchdog, Off
         SetTimer, UpdateAutoSellTimerUI, Off
         GuiControl, Main:, TimerStatus, Next Sell In: Inactive
-        GuiControl, Main:, StartBtn, ▶️ Start
+        GuiControl, Main:, StartBtn, Start
         GuiControl, Main:, Status, Status: Stopped
         return
     }
@@ -805,7 +805,7 @@ ToggleMacro:
     SetTimer, BackgroundInactivityWatchdog, 250
     SetTimer, UpdateAutoSellTimerUI, 1000
     
-    GuiControl, Main:, StartBtn, ⏹️ Stop
+    GuiControl, Main:, StartBtn, Stop
     SetTimer, MainWorkflow, -10
 return
 
@@ -905,7 +905,7 @@ MainWorkflow:
         }
     }
 
-    GuiControl, Main:, StartBtn, ▶️ Start
+    GuiControl, Main:, StartBtn, Start
     GuiControl, Main:, Status, Status: Stopped
 return
 
